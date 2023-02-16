@@ -1,38 +1,23 @@
-# create-svelte
+# Tools
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is a collection of tools or utilities that are sort of useful to me 😅. 
 
-## Creating a project
+## Current tools
+- Car Import Calculator (MRA) - `inprogress`
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Upcoming
+- Pay calculation
+- Clipboard
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Stack
+This is written in Svelte and using Sveltekit. Its hosted on Vercel.
+Will use supabase for anything that needs a backend.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Contribution
+Contributions will be appreciated, you can either pick up the planned tools or any feature or bug-fix request.
 
-## Developing
+## Feature request
+Post an issue or work on it, its all good 😎
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+------
+This readme is a work in progress too 🙂

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { calculatevehicleDuty } from '../../../calculations/vehicle-import';
-	import CurrencyInput from '../../../components/input/CurrencyInput.svelte';
-	import YearPicker from '../../../components/pickers/year-picker.svelte';
-	import { formatCurrency } from '../../../utils/input';
+	import CurrencyInput from '@/components/input/CurrencyInput.svelte';
+	import YearPicker from '@/components/pickers/year-picker.svelte';
+	import { calculatevehicleDuty } from '@/features/mra/vehicle-import';
+	import { formatCurrency } from '@/utils/input';
 	let value = new Date();
 	let engineSize = 1499;
 	let cost = 2000000;

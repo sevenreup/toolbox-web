@@ -6,7 +6,7 @@ This is a collection of tools or utilities that are sort of useful to me 😅.
 - Car Import Calculator (MRA) - `inprogress`
 
 ## Upcoming
-- Pay calculation
+- Paye calculation
 - Clipboard
 
 ## Stack

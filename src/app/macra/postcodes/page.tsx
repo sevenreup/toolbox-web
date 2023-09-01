@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { postGroups } from "./groups";
+import { flattenPostCodes } from "./groups";
 import { PostGroup } from "./model";
 import {
   Collapsible,
@@ -19,13 +19,16 @@ import { Button } from "@/components/ui/button";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Metadata } from "next";
 import { getOpenGraphData } from "@/lib/seo";
+import { DataTable } from "./data-table";
+import { columns } from "./columns";
+
+
 
 export default function Page() {
+  const data = flattenPostCodes();
   return (
     <div className="container mt-6">
-      {postGroups.map((group) => {
-        return <LocationCodes key={group.name} group={group} />;
-      })}
+      <DataTable columns={columns} data={data} />
     </div>
   );
 }

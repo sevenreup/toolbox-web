@@ -1,15 +1,14 @@
 "use server";
 
 import { DutyCalculationData } from "@/lib/types";
-import axios from "axios";
 import * as cheerio from "cheerio";
 
 export async function fetchDuty(
-  data: object
+  data: Record<string, string>
 ): Promise<DutyCalculationData | undefined> {
   try {
+    console.log(data);
     const form = new FormData();
-    // append data to form by looping through the data object
     for (const key in data) {
       if (Object.prototype.hasOwnProperty.call(data, key)) {
         const element = (data as any)[key as any];
@@ -19,16 +18,21 @@ export async function fetchDuty(
 
     const options = {
       method: "POST",
-      url: "https://www.mra.mw/WebServices/calculateDuty",
       headers: {
-        "Content-Type":
-          "multipart/form-data; boundary=---011000010111000001101001",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent":
+          "Mozilla/5.0 (Linux; Android 13; SM-A536U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36",
       },
-      data: form,
+      body: new URLSearchParams(data),
     };
 
-    var response = await axios.request(options);
-    var html = response.data;
+    var response = await fetch(
+      "https://www.mra.mw/WebServices/calculateDuty",
+      options
+    );
+
+    var html = await response.text();
+
     const $ = cheerio.load(html);
     const text = $(".course-post blockquote").text().trim();
     const purposesRegex = /Purposes\(VDP\):\s*([A-Z]+\s[\d,]+\.\d+)/;

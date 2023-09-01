@@ -2,8 +2,8 @@ import { LogoJsonLdProps } from "next-seo";
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
 export const SiteInfo = {
-  title: "Tools by Cphiri",
-  description: "A collection of tools by Cphiri",
+  title: "Toolbox",
+  description: "A collection of different tools",
   baseUrl: "http://tools.cphiri.dev",
   logo: "http://tools.cphiri.dev/icon.svg",
 };
@@ -20,12 +20,12 @@ export const getOpenGraphData = ({
   title?: string;
   description?: string;
 }): OpenGraph => {
-  const actualTitle = title ? `${title} | Tools by Cphiri` : "Tools by Cphiri";
+  const actualTitle = title ? `${title} | Seven Toolbox` : "Toolbox";
   return {
     title: actualTitle,
-    description: description ?? "A collection of tools by Cphiri",
+    description: description ?? "A collection of different tools",
     url: "http://tools.cphiri.dev",
-    siteName: "Tools by Cphiri",
+    siteName: "Toolbox",
     images: [
       {
         url: "http://tools.cphiri.dev/og",

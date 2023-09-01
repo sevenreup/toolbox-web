@@ -11,10 +11,10 @@ import { GeneralSeo } from "@/lib/search";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: { template: "%s | Tools for Malawi", default: "Tools by Cphiri" },
-  description: "A collection of tools by Cphiri",
+  title: { template: "%s | Seven Toolbox", default: "Toolbox" },
+  description: "A collection of different tools",
   generator: "CPhiri",
-  applicationName: "Tools for Malawi",
+  applicationName: "Seven Toolbox",
   referrer: "origin-when-cross-origin",
   keywords: [
     "Malawi",
@@ -22,10 +22,11 @@ export const metadata: Metadata = {
     "postcodes malawi",
     "Tools",
     "Malawi tools",
-    "Cphiri",
-    "Christopher Phiri",
-    "Christopher",
-    "Phiri",
+    "Malawi toolbox",
+    "Malawi postcodes",
+    "Malawi duty",
+    "Malawi tax",
+    "Seven Toolbox",
   ],
   authors: [{ name: "Christopher", url: "http://www.cphiri.dev" }],
   metadataBase: new URL("http://tools.cphiri.dev"),

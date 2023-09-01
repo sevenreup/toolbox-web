@@ -20,7 +20,7 @@ export async function GET() {
           alignItems: "center",
         }}
       >
-        🔨 Tools
+        🔨 Seven Toolbox
       </div>
     ),
     {

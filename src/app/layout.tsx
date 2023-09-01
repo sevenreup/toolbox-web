@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SiteHeader } from "@/components/nav/site-header";
 import { ThemeProvider } from "@/components/providers";
+import Analytics from "@/components/analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +26,12 @@ export default function RootLayout({
           inter.className
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SiteHeader />
-          {children}
-        </ThemeProvider>
+        <Analytics>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <SiteHeader />
+            {children}
+          </ThemeProvider>
+        </Analytics>
       </body>
     </html>
   );

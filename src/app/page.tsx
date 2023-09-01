@@ -3,8 +3,13 @@ import { Service } from "@/lib/types";
 const services: Service[] = [
   {
     title: "Duty Import Calculator",
-    description: "Calculate the cost of importing a car in Malaw",
+    description: "Calculate the cost of importing a car in Malawi",
     url: "/mra/duty-calculator",
+  },
+  {
+    title: "Malawi POSTCODES",
+    description: "All post codes for malawi",
+    url: "/macra/postcodes",
   },
 ];
 

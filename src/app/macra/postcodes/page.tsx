@@ -17,6 +17,8 @@ import {
 import { Card, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CaretSortIcon } from "@radix-ui/react-icons";
+import { Metadata } from "next";
+import { getOpenGraphData } from "@/lib/seo";
 
 export default function Page() {
   return (
@@ -69,4 +71,13 @@ const LocationCodes = ({ group }: { group: PostGroup }) => {
       </CollapsibleContent>
     </Collapsible>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Malawi POSTCODES",
+  description: "All post codes for malawi",
+  openGraph: getOpenGraphData({
+    title: "Malawi POSTCODES",
+    description: "All post codes for malawi",
+  }),
 };

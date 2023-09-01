@@ -1,4 +1,6 @@
+import { Metadata } from "next";
 import DutyForm from "./form";
+import { getOpenGraphData } from "@/lib/seo";
 
 export default function Page() {
   return (
@@ -10,5 +12,13 @@ export default function Page() {
   );
 }
 
+export const metadata: Metadata = {
+  title: "Duty Import Calculator",
+  description: "Calculate the cost of importing a car in Malawi",
+  openGraph: getOpenGraphData({
+    title: "Duty Import Calculator",
+    description: "Calculate the cost of importing a car in Malawi",
+  }),
+};
 
-export const runtime = 'edge'
+export const runtime = "edge";

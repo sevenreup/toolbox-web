@@ -4,9 +4,10 @@ import { DutyCalculationData } from "@/lib/types";
 import * as cheerio from "cheerio";
 
 export async function fetchDuty(
-  data: object
+  data: Record<string, string>
 ): Promise<DutyCalculationData | undefined> {
   try {
+    console.log(data);
     const form = new FormData();
     for (const key in data) {
       if (Object.prototype.hasOwnProperty.call(data, key)) {
@@ -18,18 +19,19 @@ export async function fetchDuty(
     const options = {
       method: "POST",
       headers: {
-        "Content-Type":
-          "multipart/form-data; boundary=---011000010111000001101001",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent":
+          "Mozilla/5.0 (Linux; Android 13; SM-A536U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36",
       },
-      body: form,
+      body: new URLSearchParams(data),
     };
 
     var response = await fetch(
       "https://www.mra.mw/WebServices/calculateDuty",
       options
     );
+
     var html = await response.text();
-    console.log("dd" + html);
 
     const $ = cheerio.load(html);
     const text = $(".course-post blockquote").text().trim();

@@ -26,12 +26,15 @@ export default function RootLayout({
           inter.className
         )}
       >
-        <Analytics>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <SiteHeader />
-            {children}
-          </ThemeProvider>
-        </Analytics>
+        {process.env.NEXT_PUBLIC_MEASUREMENT_ID && (
+          <Analytics
+            GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_MEASUREMENT_ID as string}
+          />
+        )}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SiteHeader />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

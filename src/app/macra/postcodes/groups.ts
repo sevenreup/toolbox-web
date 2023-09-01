@@ -75,32 +75,32 @@ export const postGroups: PostGroup[] = [
   {
     name: "Chitipa",
     codes: chitipaCodes,
-    region: "central",
+    region: "north",
   },
   {
     name: "Karonga",
     codes: karongaCodes,
-    region: "central",
+    region: "north",
   },
   {
     name: "Likoma",
     codes: likomaCodes,
-    region: "central",
+    region: "north",
   },
   {
     name: "Mzimba",
     codes: mzimbaCodes,
-    region: "central",
+    region: "north",
   },
   {
     name: "Nkhata Bay",
     codes: nkhata_bayCodes,
-    region: "central",
+    region: "north",
   },
   {
     name: "Rumphi",
     codes: rumphiCodes,
-    region: "central",
+    region: "north",
   },
   {
     name: "Dedza",
@@ -150,62 +150,62 @@ export const postGroups: PostGroup[] = [
   {
     name: "Balaka",
     codes: balakaCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Chikwawa",
     codes: chikwawaCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Chiradzulu",
     codes: chiradzuluCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Machinga",
     codes: machingaCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Mangochi Town",
     codes: mangochi_townCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Mangochi Rural",
     codes: mangochi_ruralCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Mulanje",
     codes: mulanjeCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Mwanza",
     codes: mwanzaCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Neno",
     codes: nenoCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Nsanje",
     codes: nsanjeCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Phalombe",
     codes: phalombeCodes,
-    region: "central",
+    region: "south",
   },
   {
     name: "Thyolo",
     codes: thyoloCodes,
-    region: "central",
+    region: "south",
   },
 ];
 

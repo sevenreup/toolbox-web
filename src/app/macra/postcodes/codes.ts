@@ -2,15 +2,15 @@
 
 export const chitipaCodes = [
   { code: "101100", name: "Chitipa BOMA", group: "chitipa" },
-  { code: "101101", name: "Kameme", group: "chitipa" },
-  { code: "101102", name: "Bulambya Songwe", group: "chitipa" },
-  { code: "101103", name: "Mwabulambya", group: "chitipa" },
-  { code: "101104", name: "Mwenemisuku", group: "chitipa" },
-  { code: "101105", name: "Lwangwa", group: "chitipa" },
-  { code: "101106", name: "Mwenewenya", group: "chitipa" },
-  { code: "101107", name: "Nthengatenga", group: "chitipa" },
-  { code: "101108", name: "Nthalire", group: "chitipa" },
-  { code: "101109", name: "Wavikaza", group: "chitipa" },
+  { code: "101101", name: "TA Kameme", group: "chitipa" },
+  { code: "101102", name: "BSTA Bulambya Songwe", group: "chitipa" },
+  { code: "101103", name: "TA Mwabulambya", group: "chitipa" },
+  { code: "101104", name: "TA Mwenemisuku", group: "chitipa" },
+  { code: "101105", name: "STA Lwangwa", group: "chitipa" },
+  { code: "101106", name: "TA Mwenewenya", group: "chitipa" },
+  { code: "101107", name: "STA Nthengatenga", group: "chitipa" },
+  { code: "101108", name: "TA Nthalire", group: "chitipa" },
+  { code: "101109", name: "STA Wavikaza", group: "chitipa" },
 ];
 export const karongaCodes = [
   { code: "102100", name: "Karonga", group: "karonga" },

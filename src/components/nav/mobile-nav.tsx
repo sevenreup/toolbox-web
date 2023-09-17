@@ -10,6 +10,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { allServices } from "@/config/services";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -34,8 +35,14 @@ export function MobileNav() {
           <Icons.logo className="mr-2 h-4 w-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-          <div className="flex flex-col space-y-3"></div>
+        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10">
+          <div className="flex flex-col space-y-3">
+            {allServices.map((service) => (
+              <Link key={service.url} href={service.url}>
+                {service.title}
+              </Link>
+            ))}
+          </div>
         </ScrollArea>
       </SheetContent>
     </Sheet>

@@ -16,20 +16,31 @@ import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 type IDutyForm = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
-  currency: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  currency: z.string().nonempty({
+    message: "Please select a currency.",
   }),
-  cif: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  cif: z.coerce.number().nonnegative({
+    message: "Please enter a valid CIF.",
   }),
-  portCharge: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  portCharge: z.coerce.number().nonnegative({
+    message: "Please enter a valid Port Change.",
   }),
-  age: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  engineCapacity: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  age: z.coerce
+    .number({
+      required_error: "Please enter a valid year.",
+      invalid_type_error: "Please enter a valid year.",
+    })
+    .refine(
+      (year) => {
+        return Number.isInteger(year) && year >= 1000 && year <= 9999;
+      },
+      {
+        message:
+          "Invalid year. Please enter a 4-digit year between 1000 and 9999 as a number.",
+      }
+    ),
+  engineCapacity: z.string().nonempty({
+    message: "Please select a engine capacity.",
   }),
 });
 
@@ -44,9 +55,9 @@ export default function DutyForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       currency: "",
-      cif: "",
-      portCharge: "",
-      age: "",
+      cif: 0,
+      portCharge: 0,
+      age: undefined,
       engineCapacity: "",
     },
   });
@@ -88,16 +99,19 @@ export default function DutyForm() {
           control={form.control}
           name="cif"
           label="Cost, Insurance & Freight (CIF):"
+          type="number"
         />
         <TextFormField
           control={form.control}
           name="portCharge"
           label="Port charge:"
+          type="number"
         />
         <TextFormField
           control={form.control}
           name="age"
           label="Year of Make:"
+          type="number"
         />
         <SelectFormField
           control={form.control}

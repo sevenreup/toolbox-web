@@ -1,6 +1,5 @@
 "use client";
 import {
-  Form,
   FormControl,
   FormDescription,
   FormField,
@@ -8,10 +7,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Control, FieldPath, FieldValues, useForm } from "react-hook-form";
-import * as z from "zod";
+import { Control, FieldPath, FieldValues } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -19,9 +15,9 @@ import {
   SelectValue,
   SelectContent,
   SelectGroup,
-  SelectLabel,
   SelectItem,
 } from "./ui/select";
+import { type } from "os";
 
 type IGenericForm<
   TFieldValues extends FieldValues = FieldValues,
@@ -32,6 +28,7 @@ type IGenericForm<
   label?: string;
   description?: string;
   placeholder?: string;
+  type?: string;
 };
 
 export const TextFormField = <
@@ -43,6 +40,7 @@ export const TextFormField = <
   name,
   description,
   placeholder,
+  type,
 }: IGenericForm<TFieldValues, TName>) => {
   return (
     <FormField
@@ -52,7 +50,7 @@ export const TextFormField = <
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input placeholder={placeholder} {...field} />
+            <Input placeholder={placeholder} {...field} type={type}/>
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />

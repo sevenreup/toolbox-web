@@ -4,7 +4,7 @@ import { DutyCalculationData } from "@/lib/types";
 import * as cheerio from "cheerio";
 
 export async function fetchDuty(
-  data: Record<string, string>
+  data: Record<string, string | number>
 ): Promise<DutyCalculationData | undefined> {
   try {
     console.log(data);
@@ -23,7 +23,7 @@ export async function fetchDuty(
         "User-Agent":
           "Mozilla/5.0 (Linux; Android 13; SM-A536U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36",
       },
-      body: new URLSearchParams(data),
+      body: new URLSearchParams(data as any),
     };
 
     var response = await fetch(

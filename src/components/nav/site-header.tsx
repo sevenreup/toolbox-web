@@ -1,7 +1,8 @@
-import Image from "next/image";
 import { MainNav } from "@/components/nav/main-nav";
 import { ModeToggle } from "@/components/nav/mode-toggle";
 import { MobileNav } from "./mobile-nav";
+import { Button } from "../ui/button";
+import { Github } from "lucide-react";
 
 export function SiteHeader() {
   return (
@@ -11,6 +12,11 @@ export function SiteHeader() {
         <MobileNav />
         <div className="flex flex-1 items-center justify-end space-x-2 md:justify-end">
           <nav className="flex items-center">
+            <a href="https://github.com/sevenreup/toolbox-web" target="_blank">
+              <Button size="icon" variant="ghost">
+                <Github />
+              </Button>
+            </a>
             <ModeToggle />
           </nav>
         </div>

@@ -33,6 +33,7 @@
     "next": "15.0.2",
     "next-seo": "^6.6.0",
     "next-themes": "^0.3.0",
+    "pg": "^8.13.1",
     "react": "19.0.0-beta-26f2496093-20240514",
     "react-dom": "19.0.0-beta-26f2496093-20240514",
     "react-hook-form": "^7.53.1",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pg": "^8.11.10",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "eslint": "^8",
@@ -63,4 +65,3 @@
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }
-

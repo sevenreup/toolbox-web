@@ -20,3 +20,18 @@ export interface DutyCalculationData {
   purposesVDP: string;
   estimatedTDE: string;
 }
+
+export interface InflationRateResult {
+  data: InflationRate[];
+}
+
+export type InflationRate = {
+  year: number;
+  month: number;
+  overall_cpi: number;
+  overall_inflation: number;
+  food_cpi: number;
+  food_inflation: number;
+  non_food_cpi: number;
+  non_food_inflation: number;
+}

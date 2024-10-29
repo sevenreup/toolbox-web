@@ -18,6 +18,8 @@ export type ChartType = "line" | "area" | "bar";
 export interface MetricConfig {
   name: string;
   color: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 export interface Metrics {
@@ -26,4 +28,17 @@ export interface Metrics {
 
 export interface VisibleMetrics {
   [key: string]: boolean;
+}
+
+export interface SummaryCardProps {
+  title: string;
+  value: number;
+  previousValue: number;
+  icon: React.ReactNode;
+  description: string;
+}
+
+export interface PracticalExampleProps {
+  inflationRate: number;
+  baseAmount?: number;
 }

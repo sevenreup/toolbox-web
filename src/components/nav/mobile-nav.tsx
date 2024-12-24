@@ -10,7 +10,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { allServices } from "@/config/services";
+import { serviceGroups } from "@/config/services";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -37,10 +37,32 @@ export function MobileNav() {
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10">
           <div className="flex flex-col space-y-3">
-            {allServices.map((service) => (
-              <Link key={service.url} href={service.url}>
-                {service.title}
-              </Link>
+            {serviceGroups.map((group) => (
+              <div
+                key={group.title}
+                className="relative flex w-full min-w-0 flex-col p-2"
+              >
+                <div
+                  className={cn(
+                    "duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+                    "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0"
+                  )}
+                >
+                  {group.title}
+                </div>
+                <div className={cn("w-full text-sm")}>
+                  <ul className={cn("flex w-full min-w-0 flex-col gap-1")}>
+                    {group.services.map((service) => (
+                      <li
+                        key={service.url}
+                        className={cn("group/menu-item relative")}
+                      >
+                        <a href={service.url}>{service.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             ))}
           </div>
         </ScrollArea>
@@ -77,3 +99,4 @@ function MobileLink({
     </Link>
   );
 }
+

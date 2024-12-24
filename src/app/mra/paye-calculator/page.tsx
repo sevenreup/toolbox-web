@@ -36,6 +36,21 @@ const PAYECalculator = () => {
   const [period, setPeriod] = useState("monthly");
   const [taxBreakdown, setTaxBreakdown] = useState<PayeResults | null>(null);
 
+  // Format number with commas
+  const formatNumber = (num: string) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  // Remove non-numeric characters and format
+  const handleIncomeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^0-9]/g, "");
+    if (value) {
+      setIncome(formatNumber(value));
+    } else {
+      setIncome("");
+    }
+  };
+
   const calculatePAYE = (amount: number, inputPeriod: string): PayeResults => {
     // Convert to monthly if yearly input
     const monthlyAmount = inputPeriod === "yearly" ? amount / 12 : amount;
@@ -127,35 +142,43 @@ const PAYECalculator = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const result = calculatePAYE(parseFloat(income), period);
+    const numericValue = parseFloat(income.replace(/,/g, ""));
+    const result = calculatePAYE(numericValue, period);
     setTaxBreakdown(result);
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="w-full max-w-2xl mx-auto mt-4">
       <CardHeader>
-        <CardTitle>PAYE Tax Calculator</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-xl md:text-2xl">
+          PAYE Tax Calculator
+        </CardTitle>
+        <CardDescription className="text-sm md:text-base">
           Calculate your Pay As You Earn (PAYE) tax based on 2024 rates
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
+      <CardContent className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="income">Gross Income (MK)</Label>
+              <Label htmlFor="income" className="text-sm font-medium">
+                Gross Income (MK)
+              </Label>
               <Input
                 id="income"
-                type="number"
+                type="text"
+                inputMode="numeric"
                 placeholder="Enter your income"
                 value={income}
-                onChange={(e) => setIncome(e.target.value)}
+                onChange={handleIncomeChange}
                 className="w-full"
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="period">Period</Label>
+              <Label htmlFor="period" className="text-sm font-medium">
+                Period
+              </Label>
               <Select value={period} onValueChange={setPeriod}>
                 <SelectTrigger id="period">
                   <SelectValue placeholder="Select period" />
@@ -173,46 +196,51 @@ const PAYECalculator = () => {
         </form>
 
         {taxBreakdown && (
-          <div className="mt-6 space-y-4">
-            <div className="rounded-lg border p-4">
-              <h3 className="font-semibold mb-2">
+          <div className="space-y-4">
+            <div className="rounded-lg border p-3 md:p-4 overflow-x-auto">
+              <h3 className="font-semibold mb-3 text-sm md:text-base">
                 Tax Breakdown (
                 {taxBreakdown.period === "yearly" ? "Yearly" : "Monthly"})
               </h3>
-              <div className="space-y-2">
-                <div className="grid grid-cols-4 text-sm font-medium">
+              <div className="min-w-[600px] md:min-w-0">
+                <div className="grid grid-cols-4 text-xs md:text-sm font-medium mb-2 gap-2">
                   <span>Bracket</span>
                   <span>Rate</span>
                   <span>Amount</span>
                   <span>Tax</span>
                 </div>
-                {taxBreakdown.breakdown.map((bracket, index) => (
-                  <div key={index} className="grid grid-cols-4 text-sm">
-                    <span>MK {bracket.bracket}</span>
-                    <span>{bracket.rate}%</span>
-                    <span>MK {bracket.amount.toLocaleString()}</span>
-                    <span>MK {bracket.tax.toLocaleString()}</span>
-                  </div>
-                ))}
+                <div className="space-y-1.5">
+                  {taxBreakdown.breakdown.map((bracket, index) => (
+                    <div
+                      key={index}
+                      className="grid grid-cols-4 text-xs md:text-sm gap-2"
+                    >
+                      <span>MK {bracket.bracket}</span>
+                      <span>{bracket.rate}%</span>
+                      <span>MK {bracket.amount.toLocaleString()}</span>
+                      <span>MK {bracket.tax.toLocaleString()}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div className="p-4 rounded-lg border">
-                <h4 className="font-semibold">Gross Income</h4>
-                <p className="text-lg">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+              <div className="p-3 md:p-4 rounded-lg border">
+                <h4 className="font-semibold text-sm mb-1">Gross Income</h4>
+                <p className="text-base md:text-lg break-words">
                   MK {taxBreakdown.grossIncome.toLocaleString()}
                 </p>
               </div>
-              <div className="p-4 rounded-lg border">
-                <h4 className="font-semibold">Total Tax</h4>
-                <p className="text-lg">
+              <div className="p-3 md:p-4 rounded-lg border">
+                <h4 className="font-semibold text-sm mb-1">Total Tax</h4>
+                <p className="text-base md:text-lg break-words font-bold">
                   MK {taxBreakdown.totalTax.toLocaleString()}
                 </p>
               </div>
-              <div className="p-4 rounded-lg border">
-                <h4 className="font-semibold">Net Income</h4>
-                <p className="text-lg">
+              <div className="p-3 md:p-4 rounded-lg border">
+                <h4 className="font-semibold text-sm mb-1">Net Income</h4>
+                <p className="text-base md:text-lg break-words font-bold">
                   MK {taxBreakdown.netIncome.toLocaleString()}
                 </p>
               </div>

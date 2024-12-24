@@ -1,4 +1,7 @@
-import exp from "constants";
+export interface ServiceGroup {
+  title: string;
+  services: Service[];
+}
 
 export interface Service {
   title: string;

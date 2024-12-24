@@ -110,7 +110,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
               <ArrowDownIcon className="h-4 w-4 text-green-500" />
             )}
             <span
-              className={`text-sm ${
+              className={`text-sm MK{
                 isPositive ? "text-red-500" : "text-green-500"
               }`}
             >
@@ -157,10 +157,10 @@ const PracticalExample: React.FC<PracticalExampleProps> = ({
         <div className="space-y-4">
           <div>
             <p className="text-sm text-muted-foreground">
-              If something cost ${baseAmount.toFixed(2)} last year:
+              If something cost MK{baseAmount.toFixed(2)} last year:
             </p>
             <p className="text-lg font-medium mt-1">
-              It now costs ${newAmount.toFixed(2)}
+              It now costs MK{newAmount.toFixed(2)}
             </p>
           </div>
           <div className="space-y-2">
@@ -168,7 +168,7 @@ const PracticalExample: React.FC<PracticalExampleProps> = ({
             <ul className="text-sm space-y-1">
               <li className="flex items-center text-red-500">
                 <ArrowUpIcon className="h-4 w-4 mr-2" />
-                Costs ${difference.toFixed(2)} more than before
+                Costs MK{difference.toFixed(2)} more than before
               </li>
               <li className="flex items-center text-amber-500">
                 <TrendingUp className="h-4 w-4 mr-2" />
@@ -205,7 +205,7 @@ const InflationDashboard: React.FC = () => {
     const fetchData = async (): Promise<void> => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/inflation?year=${selectedYear}`);
+        const response = await fetch(`/api/inflation?year=MK{selectedYear}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const result = await response.json();
         const formattedData: FormattedInflationData[] = result.data.map(
@@ -263,7 +263,7 @@ const InflationDashboard: React.FC = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
           <YAxis
-            tickFormatter={(value) => `${value}%`}
+            tickFormatter={(value) => `MK{value}%`}
             domain={["auto", "auto"]}
           />
           <Tooltip content={<CustomTooltip />} />

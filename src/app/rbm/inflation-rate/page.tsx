@@ -110,7 +110,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
               <ArrowDownIcon className="h-4 w-4 text-green-500" />
             )}
             <span
-              className={`text-sm MK{
+              className={`text-sm ${
                 isPositive ? "text-red-500" : "text-green-500"
               }`}
             >
@@ -205,7 +205,7 @@ const InflationDashboard: React.FC = () => {
     const fetchData = async (): Promise<void> => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/inflation?year=MK{selectedYear}`);
+        const response = await fetch(`/api/inflation?year=${selectedYear}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const result = await response.json();
         const formattedData: FormattedInflationData[] = result.data.map(
@@ -263,7 +263,7 @@ const InflationDashboard: React.FC = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
           <YAxis
-            tickFormatter={(value) => `MK{value}%`}
+            tickFormatter={(value) => `${value}%`}
             domain={["auto", "auto"]}
           />
           <Tooltip content={<CustomTooltip />} />
